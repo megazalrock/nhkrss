@@ -12,3 +12,5 @@ Feed::update_feed_database('http://www3.nhk.or.jp/rss/news/cat6.xml');
 
 $db = new DataBase();
 $db->sweep_db();
+
+echo 'done !';
