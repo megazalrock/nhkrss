@@ -5,7 +5,7 @@ Class DataBase{
 	private $min_time;
 	private $table_name = 'feed';
 	function __construct(){
-		$this->min_time = 3 * 24 * 60 * 60;
+		$this->min_time = 1 * 24 * 60 * 60;
 		$this->config = parse_ini_file(dirname(__FILE__) . '/../config.ini');
 		try{
 			$dbh = $this->connection();
