@@ -1,6 +1,5 @@
 <?php 
 date_default_timezone_set('Asia/Tokyo');
-require_once(dirname(__FILE__) . '/cache.php');
 require_once(dirname(__FILE__) . '/db.php');
 
 class Feed {
@@ -25,6 +24,8 @@ class Feed {
 		foreach ($feed->channel->item as $feed_item) {
 			$db->save_feed_item(new FeedItem($feed_item, $url));
 		}
+
+
 	}
 
 	public function get_feed_items(){
@@ -38,7 +39,6 @@ class Feed {
 	}
 
 	public function get_feed_xml(){
-		$cache_file_name = 'rss.xml';
 		$feed_item_template = '<item>
 		<title>%1$s</title>
 		<link>%2$s</link>

@@ -1,9 +1,9 @@
 #!/usr/local/bin/php
 <?php
+//local用 #!/usr/bin/php
 date_default_timezone_set('Asia/Tokyo');
 require_once(dirname(__FILE__) . '/lib/feed.php');
 require_once(dirname(__FILE__) . '/lib/db.php');
-require_once(dirname(__FILE__) . '/lib/cache.php');
 
 Feed::update_feed_database('http://www3.nhk.or.jp/rss/news/cat0.xml');
 Feed::update_feed_database('http://www3.nhk.or.jp/rss/news/cat1.xml');
@@ -14,5 +14,13 @@ Feed::update_feed_database('http://www3.nhk.or.jp/rss/news/cat6.xml');
 
 $db = new DataBase();
 $db->sweep_db();
-Cache::sweep_cache(true);
+
+$last_updated_date = dirname(__FILE__) . '/htdocs/last_updated';
+if(file_exists($last_updated_date)){
+	unlink($last_updated_date);
+}
+$handle = fopen($last_updated_date, 'w');
+fwrite($handle, date('c') . ' by cron');
+fclose($handle);
+
 ?>

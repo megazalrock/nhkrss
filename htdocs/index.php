@@ -13,6 +13,9 @@ $newest_link = $items[0]->link;
 $oldest_date = date('Y/m/d H:i:s', $items[$count - 1]->datetime);
 $oldest_title = $items[$count - 1]->title;
 $oldest_link = $items[$count - 1]->link;
+
+$last_updated = file_get_contents('last_updated');
+
 ?>
 <style>
 	body{
@@ -20,6 +23,7 @@ $oldest_link = $items[$count - 1]->link;
 	}
 </style>
 <?php
+echo "Last Updated : ${last_updated}<br><br>";
 echo "Item Count : ${count} <br><br>";
 echo "Newest: ${newest_date} ${newest_title}<br>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${newest_link}\" target=\"_blank\">${newest_link}</a><br><br>";

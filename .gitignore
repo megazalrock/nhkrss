@@ -1,3 +1,4 @@
 config.ini
 cache/*
 !cache/delete.me
+htdocs/last_updated
